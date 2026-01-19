@@ -368,3 +368,47 @@ footer {
   color: var(--text-secondary);
   font-size: 0.9rem;
 }
+
+/* Social Icons under h1 */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;              /* space between icons */
+  margin: 16px 0 24px;    /* space after h1 and before bio */
+  flex-wrap: wrap;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  color: var(--accent);
+  font-size: 1.5rem;      /* icon size */
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icons a:hover,
+.social-icons a:focus {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px var(--shadow);
+  outline: none;
+}
+
+/* Dark mode adjustments (if needed) */
+[data-theme="dark"] .social-icons a {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(180,160,255,0.28);
+}
+
+[data-theme="dark"] .social-icons a:hover {
+  background: var(--accent);
+}
