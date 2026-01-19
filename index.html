@@ -4,6 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ekene Talks - Home</title>
+
+  <!-- SEO Essentials -->
+  <title>Ekene Talks | Professional Voice Over Artist, Educator & Screenwriter</title>
+  <meta name="description" content="Ekene Talks - Voice over artist, educator, and screenwriter specializing in immersive narratives, powerful deliveries, and compelling scripts. Explore music, audiobooks, videos, and join the virtual learning community.">
+  <meta name="keywords" content="Ekene Talks, voice over artist, Nigerian voice actor, audiobooks, music, Netherworld, Dark Emperor Chronicles, screenwriter, voice acting Nigeria">
+  <meta name="author" content="Kenechukwu">
+
+  <!-- Open Graph / Social Sharing (great for Facebook, LinkedIn, etc.) -->
+  <meta property="og:title" content="Ekene Talks - Voice Over, Music & Audiobooks">
+  <meta property="og:description" content="Professional voice over artist crafting immersive stories. Listen to music, audiobooks, watch videos, and join the community.">
+  <meta property="og:image" content="https://yourdomain.com/profile.jpg"> <!-- use absolute URL to your profile pic -->
+  <meta property="og:url" content="https://yourdomain.com/">
+  <meta property="og:type" content="website">
+
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -46,6 +61,147 @@
       </div>
 
       <h1>Ekene Talks</h1>
+      <!-- New: Social icons right under h1 -->
+      <div class="social-icons">
+        <a href="https://www.facebook.com/ekenetalks" target="_blank" aria-label="Facebook" title="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://x.com/ekenetalks" target="_blank" aria-label="X (Twitter)" title="X (Twitter)">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+        <a href="https://www.tiktok.com/@ekenetalks" target="_blank" aria-label="TikTok" title="TikTok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/ekenetalks" target="_blank" aria-label="LinkedIn" title="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://www.instagram.com/ekenetalks" target="_blank" aria-label="Instagram" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+      <p class="bio">Professional voice over artist, educator, and screenwriter crafting immersive narratives, powerful deliveries, and compelling scripts that resonate.</p>
+      
+      <!-- Join link styled as button -->
+      <a href="https://t.me/ekenetalkscommunity" target="_blank" class="join-link">
+        <i class="fab fa-telegram-plane" style="font-size: 1.4rem;"></i>
+        Join our virtual learning community
+      </a>
+    </div>
+
+    <!-- Search bar now BELOW the join CTA -->
+    <div class="search-section">
+      <div class="search-wrapper" style="position: relative; display: inline-block; width: 100%;">
+        <i class="fas fa-search search-icon" style="position: absolute; top: 50%; transform: translateY(-50%); left: 20px; color: var(--text-secondary); pointer-events: none;"></i>
+        <input type="text" id="searchInput" placeholder="Search music, audiobooks, videos...">
+      </div>
+    </div>
+
+    <div class="nav-tabs">
+      <button class="tab-btn active" data-tab="music"><i class="fas fa-music"></i> Music</button>
+      <button class="tab-btn" data-tab="audiobooks"><i class="fas fa-microphone-alt"></i> Audiobooks</button>
+      <button class="tab-btn" data-tab="videos"><i class="fas fa-video"></i> Videos</button>
+    </div>
+
+    <div id="music" class="section active">
+      <div class="card-grid" id="music-grid"></div>
+    </div>
+
+    <div id="audiobooks" class="section">
+      <div class="card-grid" id="audiobooks-grid"></div>
+    </div>
+
+    <div id="videos" class="section">
+      <div class="card-grid" id="videos-grid"></div>
+    </div>
+
+    <footer>
+      © 2026 Ekene Talks • All rights reserved
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ekene Talks - Home</title>
+
+  <!-- SEO Essentials -->
+  <title>Ekene Talks | Professional Voice Over Artist, Educator & Screenwriter</title>
+  <meta name="description" content="Ekene Talks - Voice over artist, educator, and screenwriter specializing in immersive narratives, powerful deliveries, and compelling scripts. Explore music, audiobooks, videos, and join the virtual learning community.">
+  <meta name="keywords" content="Ekene Talks, voice over artist, Nigerian voice actor, audiobooks, music, Netherworld, Dark Emperor Chronicles, screenwriter, voice acting Nigeria">
+  <meta name="author" content="Kenechukwu">
+
+  <!-- Open Graph / Social Sharing (great for Facebook, LinkedIn, etc.) -->
+  <meta property="og:title" content="Ekene Talks - Voice Over, Music & Audiobooks">
+  <meta property="og:description" content="Professional voice over artist crafting immersive stories. Listen to music, audiobooks, watch videos, and join the community.">
+  <meta property="og:image" content="https://yourdomain.com/profile.jpg"> <!-- use absolute URL to your profile pic -->
+  <meta property="og:url" content="https://yourdomain.com/">
+  <meta property="og:type" content="website">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+<body data-theme="light">
+
+  <div id="platformsModal" class="modal-overlay">
+    <div class="modal-content">
+      <span class="close-btn-modal" onclick="closeModal('platformsModal')">×</span>
+      <div class="modal-title">Listen on</div>
+      <div class="platform-grid" id="platformOptions"></div>
+    </div>
+  </div>
+
+  <div id="infoModal" class="modal-overlay">
+    <div class="modal-content">
+      <span class="close-btn-modal" onclick="closeModal('infoModal')">×</span>
+      <div class="modal-title" id="infoTitle"></div>
+      <div id="infoBody" style="line-height:1.7; margin-top:18px; text-align:left;"></div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Removed search from header-row -->
+    <div class="header-row" style="justify-content: flex-end;">
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+
+    <div class="profile" style="text-align: center;">
+      <!-- Profile Image -->
+      <div class="profile-avatar">
+        <img src="./profile.jpg" 
+             alt="Ekene Talks - Kenechukwu Profile">
+      </div>
+
+      <h1>Ekene Talks</h1>
+      <!-- New: Social icons right under h1 -->
+      <div class="social-icons">
+        <a href="https://www.facebook.com/ekenetalks" target="_blank" aria-label="Facebook" title="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://x.com/ekenetalks" target="_blank" aria-label="X (Twitter)" title="X (Twitter)">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+        <a href="https://www.tiktok.com/@ekenetalks" target="_blank" aria-label="TikTok" title="TikTok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/ekenetalks" target="_blank" aria-label="LinkedIn" title="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://www.instagram.com/ekenetalks" target="_blank" aria-label="Instagram" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
       <p class="bio">Professional voice over artist, educator, and screenwriter crafting immersive narratives, powerful deliveries, and compelling scripts that resonate.</p>
       
       <!-- Join link styled as button -->
