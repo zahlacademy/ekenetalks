@@ -1,0 +1,31 @@
+{
+  "music": [
+    {
+      "id": "netherworld",
+      "title": "Netherworld",
+      "description": "A proud, unapologetic plunge into hedonistic self-destruction and forbidden pleasure. The Dark Emperor willingly surrenders to the Netherworld — a seductive realm of depravity, intense ecstasy, and moral abandon. Defiant pride, addictive nectar, tingling sensations, and ceremonial devotion. Sane life is boring. Total submission: “Willing victim I’ve become.”",
+      "downloadUrl": "https://push.fm/fl/netherworld",
+      "lyrics": "I'm The Dark Emperor Shak naka\nDon't tell me this Don't tell me that\nI know the truth I'm closer to my doom\n\nNetherworld is calling To it I am walking\nThis pleasure I feel I won't let it go\n\nNectar I suck from this nether region💦\nNext to twin tower I'll take dominion\nKitty face is smiling 😻 It is mesmerising\nThis pleasure we feel, we won't let it go\n\nTingling sensations, happy mood is on,\nDefend it I will, sanity is gone\nNormal life is boring\nBut the devil is cunning 👹\nActions I am, my words I'll be\n\nNetherworld 11x\nWilling victim I've become",
+      "platforms": {
+        "spotify": "<iframe style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/track/2rQKkKT5kTTdMXbbPo65dX?utm_source=generator&theme=0\" width=\"100%\" height=\"352\" frameborder=\"0\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>",
+        "boomplay": "<iframe src=\"https://www.boomplay.com/embed/231625040/MUSIC?colType=5&colID=123107189\" width=\"100%\" height=\"352\" frameborder=\"0\"></iframe>",
+        "audiomack": "<iframe src=\"https://audiomack.com/embed/ekenetalks/song/netherworld\" scrolling=\"no\" width=\"100%\" height=\"252\" frameborder=\"0\" title=\"Netherworld\"></iframe>",
+        "apple": "<iframe allow=\"autoplay *; encrypted-media *; fullscreen *; clipboard-write\" frameborder=\"0\" height=\"352\" style=\"width:100%;max-width:660px;overflow:hidden;border-radius:10px;\" sandbox=\"allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation\" src=\"https://embed.music.apple.com/ng/song/netherworld/1867148243\"></iframe>"
+      }
+    }
+  ],
+  "audiobooks": [
+    {
+      "title": "Dark Emperor Chronicles – Episode 1",
+      "description": "A gripping voice-acted tale of power, shadows, and inner conflict. Narrated with cinematic intensity. Perfect for late-night listening.",
+      "listenUrl": "https://example.com/podcast/episode-1"
+    }
+  ],
+  "videos": [
+    {
+      "title": "Netherworld – Official Visualizer",
+      "description": "Atmospheric visual trip through crimson-lit rituals and shadowed ecstasy. Directed to match the track’s dark, seductive energy.",
+      "watchUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    }
+  ]
+}
