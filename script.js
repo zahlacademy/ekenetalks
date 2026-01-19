@@ -85,7 +85,7 @@ function renderSection(category, items) {
     if (category === 'music') {
       buttonsHTML += `
         <button class="btn btn-outline" onclick="openMusicPlatforms(this)">
-          <i class="fas fa-headphones"></i> Listen
+          <i class="fas fa-headphones"></i> Lyrics
         </button>
       `;
       if (item.downloadUrl) {
@@ -170,6 +170,13 @@ function openMusicPlatforms(btn) {
           const content = card.querySelector('.card-content');
           document.querySelectorAll('.card-content').forEach(el => el.style.display = 'none');
           content.style.display = 'block';
+          
+          setTimeout(() => {
+            content.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'center'
+            });
+          }, 100);
         }
       } else {
         alert(`No ${p.name} embed available for this track.`);
