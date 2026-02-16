@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekene Talks - Content Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Admin-specific styles (you can move to styles.css later) */
+        body {
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px var(--shadow);
+        }
+
+        h2 {
+            color: var(--accent);
+            margin-bottom: 24px;
+            font-size: 1.6rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.25s;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            margin: 20px auto 0;
+        }
+
+        button[type="submit"]:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        #status {
+            text-align: center;
+            font-size: 1.1rem;
+            margin: 20px 0;
+            min-height: 30px;
+        }
+
+        .success {
+            color: #10b981;
+        }
+
+        .error {
+            color: #ef4444;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body data-theme="dark">
+
+    <!-- Theme Toggle (same as main site) -->
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+    <!-- Login Screen (shown until logged in) -->
+    <div id="loginScreen"
+        style="position:fixed; inset:0; background:rgba(0,0,0,0.9); display:flex; align-items:center; justify-content:center; z-index:9999; color:white;">
+        <div
+            style="background:#1e1e2f; padding:40px; border-radius:16px; width:420px; max-width:95%; text-align:center;">
+            <h2>Admin Login</h2>
+            <p>Sign in with your admin email & password</p>
+            <input id="emailInput" type="email" placeholder="Email"
+                style="width:100%; padding:14px; margin:12px 0; border-radius:8px; border:none; font-size:1.1rem;">
+            <input id="passwordInput" type="password" placeholder="Password"
+                style="width:100%; padding:14px; margin:12px 0; border-radius:8px; border:none; font-size:1.1rem;">
+            <button id="loginBtn"
+                style="background:#8b5cf6; color:white; border:none; padding:14px 32px; border-radius:50px; cursor:pointer; font-size:1.1rem; margin-top:12px;">
+                Login
+            </button>
+            <p id="loginError" style="color:#ff6b6b; margin-top:16px; min-height:24px;"></p>
+            <p style="margin-top:20px; font-size:0.9rem; color:#aaa;">
+                Contact admin if you need an account.
+            </p>
+        </div>
+    </div>
+
+    <h1>Admin: Upload Content</h1>
+
+    <section>
+        <h2>Add Music Track</h2>
+        <form id="musicForm">
+            <div class="form-group">
+                <label for="musicId">Unique ID <span style="color:#ef4444;">*</span></label>
+                <input type="text" id="musicId" placeholder="e.g. netherworld" required>
+            </div>
+            <div class="form-group">
+                <label for="musicTitle">Title <span style="color:#ef4444;">*</span></label>
+                <input type="text" id="musicTitle" placeholder="Track name" required>
+            </div>
+            <div class="form-group">
+                <label for="musicDesc">Description <span style="color:#ef4444;">*</span></label>
+                <textarea id="musicDesc" placeholder="Short description..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="musicDownload">Download URL (optional)</label>
+                <input type="text" id="musicDownload" placeholder="https://push.fm/...">
+            </div>
+            <div class="form-group">
+                <label for="musicLyrics">Lyrics (optional)</label>
+                <textarea id="musicLyrics" placeholder="Full lyrics here..."></textarea>
+            </div>
+            <button type="submit">Add Music Track</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Add Audiobook / Podcast Episode</h2>
+        <form id="audiobookForm">
+            <div class="form-group">
+                <label for="bookId">Unique ID <span style="color:#ef4444;">*</span></label>
+                <input type="text" id="bookId" placeholder="e.g. dark-emperor-1" required>
+            </div>
+            <div class="form-group">
+                <label for="bookTitle">Title <span style="color:#ef4444;">*</span></label>
+                <input type="text" id="bookTitle" placeholder="Episode title" required>
+            </div>
+            <div class="form-group">
+                <label for="bookDesc">Description <span style="color:#ef4444;">*</span></label>
+                <textarea id="bookDesc" placeholder="Short summary..." required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="bookAbout">About / Story Background (optional)</label>
+                <textarea id="bookAbout" placeholder="Longer story context..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="bookCover">Cover Art URL (optional)</label>
+                <input type="text" id="bookCover" placeholder="https://example.com/cover.jpg">
+            </div>
+            <div class="form-group">
+                <label for="bookActs">Acts JSON (optional)</label>
+                <textarea id="bookActs"
+                    placeholder='[{"name":"Act I – The Prophecy","listenUrl":"https://...mp3","duration":"18:45","description":"..."}]'></textarea>
+                <small style="color:var(--text-secondary); display:block; margin-top:6px;">
+                    Paste valid JSON array. Leave empty if no acts yet.
+                </small>
+            </div>
+            <button type="submit">Add Audiobook</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Add Video</h2>
+        <form id="videoForm">
+            <div class="form-group">
+                <label for="videoId">Unique ID <span style="color:#ef4444;">*</span></label>
+                <input type="text" id="videoId" placeholder="e.g. netherworld-visualizer" required>
+            </div>
+            <div class="form-group">
+                <label for="videoTitle">Title <span style="color:#ef4444;">*</span></label>
+                <input type="text" id="videoTitle" placeholder="Video title" required>
+            </div>
+            <div class="form-group">
+                <label for="videoDesc">Description <span style="color:#ef4444;">*</span></label>
+                <textarea id="videoDesc" placeholder="Video description..." required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="videoUrl">Watch URL <span style="color:#ef4444;">*</span></label>
+                <input type="text" id="videoUrl" placeholder="https://youtube.com/watch?v=..." required>
+            </div>
+            <button type="submit">Add Video</button>
+        </form>
+    </section>
+
+    <div id="status"></div>
+
+    <!-- Firebase SDK (only database - no auth) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+        import {
+            getAuth,
+            signInWithEmailAndPassword,
+            onAuthStateChanged,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyCH374kQpTpX7_vCRFkan5tCjKSNKfvpkw",
+            authDomain: "ekenetalkssociety.firebaseapp.com",
+            databaseURL: "https://ekenetalkssociety-default-rtdb.firebaseio.com",
+            projectId: "ekenetalkssociety",
+            storageBucket: "ekenetalkssociety.firebasestorage.app",
+            messagingSenderId: "552174210670",
+            appId: "1:552174210670:web:88f7a222aacba85cd1e07f",
+            measurementId: "G-B7W9QFLEYK"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const auth = getAuth(app);
+
+        // Theme toggle
+        const toggleBtn = document.getElementById('themeToggle');
+        const body = document.body;
+        toggleBtn?.addEventListener('click', () => {
+            const current = body.getAttribute('data-theme');
+            body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+            toggleBtn.innerHTML = current === 'dark'
+                ? '<i class="fas fa-moon"></i>'
+                : '<i class="fas fa-sun"></i>';
+        });
+
+        // Toast popup function (success/error)
+        function showToast(message, isError = false) {
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.textContent = message;
+            toast.style.position = 'fixed';
+            toast.style.bottom = '30px';
+            toast.style.left = '50%';
+            toast.style.transform = 'translateX(-50%)';
+            toast.style.padding = '14px 28px';
+            toast.style.borderRadius = '50px';
+            toast.style.backgroundColor = isError ? '#ef4444' : '#10b981';
+            toast.style.color = 'white';
+            toast.style.fontWeight = '500';
+            toast.style.fontSize = '1rem';
+            toast.style.boxShadow = '0 6px 20px rgba(0,0,0,0.4)';
+            toast.style.zIndex = '9999';
+            toast.style.opacity = '0';
+            toast.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            toast.style.pointerEvents = 'none';
+
+            // Add icon
+            toast.innerHTML = (isError ? '❌ ' : '✅ ') + message;
+
+            document.body.appendChild(toast);
+
+            // Show animation
+            setTimeout(() => {
+                toast.style.opacity = '1';
+                toast.style.transform = 'translate(-50%, 0)';
+            }, 100);
+
+            // Auto hide
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translate(-50%, 20px)';
+                setTimeout(() => toast.remove(), 400);
+            }, 4000);
+        }
+
+ //  LOGIN BUTTON HANDLER
+  // ────────────────────────────────────────────────
+  document.getElementById('loginBtn')?.addEventListener('click', async () => {
+    const email = document.getElementById('emailInput')?.value?.trim();
+    const password = document.getElementById('passwordInput')?.value?.trim();
+    const errorEl = document.getElementById('loginError');
+
+    if (!email || !password) {
+      errorEl.textContent = "Please enter email and password";
+      return;
+    }
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      // success → onAuthStateChanged will handle showing content
+    } catch (err) {
+      let msg = "Login failed";
+      if (err.code === 'auth/wrong-password') msg = "Incorrect password";
+      if (err.code === 'auth/user-not-found') msg = "No account with this email";
+      if (err.code === 'auth/invalid-email') msg = "Invalid email format";
+      errorEl.textContent = msg;
+      console.error(err);
+    }
+  });
+
+  // ────────────────────────────────────────────────
+  //  AUTH STATE LISTENER (this shows/hides content)
+  // ────────────────────────────────────────────────
+  onAuthStateChanged(auth, (user) => {
+    const loginScreen = document.getElementById('loginScreen');
+    const adminContent = document.getElementById('adminContent');
+
+    if (user) {
+      loginScreen.style.display = 'none';
+      adminContent.style.display = 'block';
+      console.log("Logged in as:", user.email, "UID:", user.uid);
+    } else {
+      loginScreen.style.display = 'flex';
+      adminContent.style.display = 'none';
+    }
+  });
+
+        // Music form
+        document.getElementById('musicForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const newItem = {
+                id: document.getElementById('musicId').value.trim(),
+                title: document.getElementById('musicTitle').value.trim(),
+                description: document.getElementById('musicDesc').value.trim(),
+                downloadUrl: document.getElementById('musicDownload').value.trim(),
+                lyrics: document.getElementById('musicLyrics').value.trim()
+            };
+
+            if (!newItem.id || !newItem.title || !newItem.description) {
+                showToast('Please fill all required fields', true);
+                return;
+            }
+
+            try {
+                const newRef = push(ref(db, 'content/music'));
+                await set(newRef, newItem);
+                showToast('Music track added successfully!');
+                e.target.reset();
+            } catch (err) {
+                console.error("Upload error:", err);
+                showToast('Error: ' + (err.message || 'Failed to upload'), true);
+            }
+        });
+
+        // Audiobook form
+        document.getElementById('audiobookForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            let acts = [];
+            const actsInput = document.getElementById('bookActs').value.trim();
+            if (actsInput) {
+                try {
+                    acts = JSON.parse(actsInput);
+                    if (!Array.isArray(acts)) throw new Error();
+                } catch {
+                    showToast('Invalid JSON in Acts field. Use valid array format.', true);
+                    return;
+                }
+            }
+
+            const newItem = {
+                id: document.getElementById('bookId').value.trim(),
+                title: document.getElementById('bookTitle').value.trim(),
+                description: document.getElementById('bookDesc').value.trim(),
+                about: document.getElementById('bookAbout').value.trim(),
+                coverArt: document.getElementById('bookCover').value.trim(),
+                acts
+            };
+
+            if (!newItem.id || !newItem.title || !newItem.description) {
+                showToast('Please fill all required fields', true);
+                return;
+            }
+
+            try {
+                const newRef = push(ref(db, 'content/audiobooks'));
+                await set(newRef, newItem);
+                showToast('Audiobook added successfully!');
+                e.target.reset();
+            } catch (err) {
+                console.error("Upload error:", err);
+                showToast('Error: ' + (err.message || 'Failed to upload'), true);
+            }
+        });
+
+        // Video form
+        document.getElementById('videoForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const newItem = {
+                id: document.getElementById('videoId').value.trim(),
+                title: document.getElementById('videoTitle').value.trim(),
+                description: document.getElementById('videoDesc').value.trim(),
+                watchUrl: document.getElementById('videoUrl').value.trim()
+            };
+
+            if (!newItem.id || !newItem.title || !newItem.description || !newItem.watchUrl) {
+                showToast('Please fill all required fields', true);
+                return;
+            }
+
+            try {
+                const newRef = push(ref(db, 'content/videos'));
+                await set(newRef, newItem);
+                showToast('Video added successfully!');
+                e.target.reset();
+            } catch (err) {
+                console.error("Upload error:", err);
+                showToast('Error: ' + (err.message || 'Failed to upload'), true);
+            }
+        });
+    </script>
+</body>
+
+</html>
